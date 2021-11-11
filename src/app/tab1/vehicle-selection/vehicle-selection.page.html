@@ -1,0 +1,48 @@
+<ion-header translucent>
+    <ion-toolbar color="secondary">
+        <ion-title>Vehicles</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="this.dismissModal()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h1>Select your vehicle</h1>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let vehicle of (vehicleService.myVehicles$ | async).data" (click)="selectVehicle(vehicle)">
+            <ion-col>
+                <div class="selection ion-activatable ripple-parent">
+                    <ion-ripple-effect></ion-ripple-effect>
+                    <ion-row class="ion-align-items-center">
+                        <ion-col>
+                            {{vehicle.license_plate}}
+                        </ion-col>
+                        <ion-col class="ion-text-right">
+                            <ion-icon name="chevron-forward-outline" size="large"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div class="selection ion-activatable ripple-parent" (click)="addVehicleRedirect()">
+                    <ion-ripple-effect></ion-ripple-effect>
+                    <ion-row class="ion-align-items-center">
+                        <ion-col>
+                            Add new vehicle
+                        </ion-col>
+                        <ion-col class="ion-text-right">
+                            <ion-icon name="add-outline" size="large"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

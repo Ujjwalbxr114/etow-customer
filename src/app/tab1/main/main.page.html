@@ -1,0 +1,23 @@
+<div class="map-overlay">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h1>Welcome!<br/>What's the emergency?</h1>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let vhServiceCat of (this.tab1Service.serviceCategories$ | async).data">
+            <ion-col>
+                <div class="info-item ion-activatable ripple-parent" (click)="callServiceCat(vhServiceCat)">
+                    <ion-ripple-effect></ion-ripple-effect>
+                    <div class="info-content">
+                        <h2 class="title">{{vhServiceCat.name}}</h2>
+                        <p>{{vhServiceCat.description}}</p>
+                    </div>
+                    <!-- <img [src]="'assets/icon/' + (vhServiceCat.name|lowercase) + '.svg'" class="info-img"
+                         [alt]="vhServiceCat.name"/> -->
+                         <img src="./assets/icon/dolly tow.svg">  
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>

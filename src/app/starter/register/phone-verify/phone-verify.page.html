@@ -1,0 +1,46 @@
+<ion-content color="secondary">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h1>Hang in there. We sent you a code to verify your mobile
+                    number, {{emailRegistrationService.emailRegistrationModel.phone_number}}</h1>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <h2>Change number</h2>
+            </ion-col>
+        </ion-row>
+        <div id="form-content" class="custom-input">
+            <ion-row>
+                <ion-col class="ion-align-self-center">
+                    <ion-input #otp1 required type="tel" maxlength="1" (keyup)="otpController($event,otp1,otp2,null)"
+                               class="verify-code">
+                    </ion-input>
+                </ion-col>
+                <ion-col class="ion-align-self-center">
+                    <ion-input #otp2 required type="tel" maxlength="1" (keyup)="otpController($event,otp2,otp3,otp1)"
+                               class="verify-code">
+                    </ion-input>
+                </ion-col>
+                <ion-col class="ion-align-self-center">
+                    <ion-input #otp3 required type="tel" maxlength="1" (keyup)="otpController($event,otp3,otp4,otp2)"
+                               class="verify-code">
+                    </ion-input>
+                </ion-col>
+                <ion-col class="ion-align-self-center">
+                    <ion-input #otp4 required type="tel" maxlength="1" (keyup)="otpController($event,otp4,null,otp3)"
+                               class="verify-code">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="secondary">
+        <ion-button expand="block" color="primary">Verify</ion-button>
+    </ion-toolbar>
+</ion-footer>
+

@@ -1,0 +1,58 @@
+<div class="map-overlay">
+    <ion-header class="ion-no-border">
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-button (click)="backButton()" color="dark">
+                    <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-item button class="location-input" lines="none">
+                    <ion-label position="floating">Current Location</ion-label>
+                    <ion-input type="text" placeholder="Location" [disabled]="true"
+                               [(ngModel)]="tab1Service.searchLocation.address"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-item button class="location-input" lines="none" (click)="showWorkshopSelectionModal()">
+                    <ion-label position="floating">Workshop Location</ion-label>
+                    <ion-input type="text" placeholder="Workshop" readonly="readonly"
+                               [(ngModel)]="tab1Service.workshopLocation.address"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
+<div class="map-overlay bottom-info">
+    <ion-grid>
+        <ion-row class="location-input">
+            <ion-col size="12">
+                <ion-item button lines="none">
+                    <ion-input type="text" placeholder="Credit Card" readonly="readonly"></ion-input>
+                    <ion-icon name="card-outline" slot="end"></ion-icon>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item button lines="none">
+                    <ion-input type="text" placeholder="Notes to driver" readonly="readonly"></ion-input>
+                    <ion-icon name="document-text-outline" slot="end"></ion-icon>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" color="primary" (click)="getHelp()">
+                    Get Help
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>

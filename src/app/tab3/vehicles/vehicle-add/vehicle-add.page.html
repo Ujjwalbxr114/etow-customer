@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="backButton()" color="dark">
+                <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h1>Add Vehicle</h1>
+            </ion-col>
+        </ion-row>
+        <form (ngSubmit)="submitVehicleAddForm()" [formGroup]="vehicleAddForm" novalidate>
+            <ion-row>
+                <ion-col>
+                    <ion-item>
+                        <ion-label position="stacked">Vehicle Plate Number</ion-label>
+                        <ion-input type="text" placeholder="SGH 1234"
+                                   formControlName="license_plate"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item>
+                        <ion-label position="stacked">Vehicle Type</ion-label>
+                        <ion-select formControlName="type_id">
+                            <ion-select-option *ngFor="let vehicleType of (vehicleService.vehicleTypes$ | async)"
+                                               [value]="vehicleType.id">{{vehicleType.value}}</ion-select-option>
+                                               
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+                <ion-col>
+                    <ion-item>
+                        <ion-label position="stacked">Vehicle Color</ion-label>
+                        <ion-input type="text" placeholder="Black" formControlName="color"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-select placeholder="Model"
+                    [(ngModel)]="emailRegistrationService.emailRegistrationModel.vehicle_model_name">
+            <ion-select-option *ngFor="let vehicleType of (vehicleService.vehicleTypes$ | async)"
+                               [value]="vehicleType.id">{{vehicleType.value}}</ion-select-option>
+                               
+        </ion-select>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item (click)="showVehicleMakesSearch()">
+                        <ion-label position="stacked">Make</ion-label>
+                        <ion-input type="text" readonly="readonly"
+                                   [disabled]="!vehicleAddForm.get('type_id').valid || !vehicleAddForm.get('model_id').valid"
+                                   formControlName="make_name"></ion-input>
+                    </ion-item>
+
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-button type="submit" expand="block" [disabled]="!vehicleAddForm.valid" color="tertiary">Save
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header translucent>
+    <ion-toolbar color="secondary">
+        <ion-title>Location Search</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="this.dismissModal()">Close</ion-button>
+        </ion-buttons>
+        <ion-progress-bar type="indeterminate" *ngIf="tab1Service.locationSearching$ | async"
+                          color="primary"></ion-progress-bar>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-item class="location-input" lines="none">
+                    <ion-button slot="end" (click)="getLocation()" color="light" size="large"
+                                [disabled]="tab1Service.locationLoading$ | async">
+                        <ion-icon name="locate-outline"></ion-icon>
+                    </ion-button>
+                    <ion-label position="floating">Current Location</ion-label>
+                    <ion-input type="text" placeholder="Location" [(ngModel)]="searchLocationName"
+                               (ionInput)="startSearchIndicator()" (ionChange)="search()" debounce="1500"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-list>
+                    <ion-list-header>{{(searchResults$ | async).length}} Results</ion-list-header>
+                    <ion-item button color="secondary" *ngFor="let result of (searchResults$ | async)"
+                              (click)="selectSearchResult(result)">
+                        <ion-label class="ion-text-wrap">
+                            <b *ngIf="result.extra && result.extra.featureName">{{result.extra.featureName}}</b>
+                            {{result.locality}}
+                            {{result.subLocality}}
+                            {{result.adminArea}}
+                            {{result.subAdminArea}}
+                            {{result.thoroughfare}}
+                            {{result.subThoroughfare}}
+                            {{result.country}}
+                            {{result.postalCode}}
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

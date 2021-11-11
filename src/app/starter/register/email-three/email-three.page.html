@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h1>Get started</h1>
+            </ion-col>
+            <ion-col class="ion-text-right">
+                <p class="step-counter">3/3</p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div class="step-indicator"></div>
+                <div class="step-indicator"></div>
+                <div class="step-indicator active-indicator"></div>
+            </ion-col>
+        </ion-row>
+        <div id="form-content" class="custom-input">
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" placeholder="Vehicle Plate Number"
+                               [(ngModel)]="emailRegistrationService.emailRegistrationModel.vehicle_license_plate"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-select placeholder="Vehicle Type"
+                                [(ngModel)]="emailRegistrationService.emailRegistrationModel.vehicle_type_id">
+                        <ion-select-option *ngFor="let vehicleType of (vehicleService.vehicleTypes$ | async)"
+                                           [value]="vehicleType.id">{{vehicleType.value}}</ion-select-option>
+                    </ion-select>
+                </ion-col>
+                <ion-col>
+                    <ion-input type="text" placeholder="Vehicle Color"
+                               [(ngModel)]="emailRegistrationService.emailRegistrationModel.vehicle_color"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" placeholder="Model" readonly="readonly" (click)="showVehicleModelsSearch()"
+                               [(ngModel)]="emailRegistrationService.emailRegistrationModel.vehicle_model_name"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" placeholder="Make" readonly="readonly"
+                               [disabled]="!(emailRegistrationService.emailRegistrationModel.vehicle_type_id > 0 && emailRegistrationService.emailRegistrationModel.vehicle_model_id > 0)"
+                               (click)="showVehicleMakesSearch()"
+                               [(ngModel)]="emailRegistrationService.emailRegistrationModel.vehicle_make_name"></ion-input>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="secondary">
+        <ion-button expand="block" color="primary" (click)="register()">Begin</ion-button>
+        
+    </ion-toolbar>
+</ion-footer>
+

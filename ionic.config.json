@@ -1,0 +1,8 @@
+{
+  "name": "etowsg-customer-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "4661d547"
+}

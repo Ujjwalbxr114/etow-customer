@@ -1,0 +1,26 @@
+<div class="map-overlay bottom-info">
+    <ion-grid>
+        <ion-row>
+            <ion-col class="ion-align-self-center ion-text-center">
+                <ion-text>Hang in there, we are getting you a tow!</ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-list>
+            <ion-item lines="none">
+                <ion-label position="stacked">Current Location</ion-label>
+                <ion-input type="text" placeholder="Location" [disabled]="true"
+                           [(ngModel)]="tab1Service.searchLocation.address"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label position="stacked">Workshop</ion-label>
+                <ion-input type="text" placeholder="Location" [disabled]="true"
+                           [(ngModel)]="tab1Service.workshopLocation.address"></ion-input>
+            </ion-item>
+        </ion-list>
+        <ion-row>
+            <ion-col class="ion-align-self-center ion-text-center">
+                <ion-button fill="clear" (click)="backButton()">Cancel</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>

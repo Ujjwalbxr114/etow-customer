@@ -1,0 +1,10 @@
+<ion-content [fullscreen]="true">
+    <app-tab1-main *ngIf="(tab1Service.step$ | async) === 1"></app-tab1-main>
+    <app-tab1-location *ngIf="(tab1Service.step$ | async) === 2"></app-tab1-location>
+    <app-tab1-workshop *ngIf="(tab1Service.step$ | async) === 3"></app-tab1-workshop>
+    <app-tab1-booking-search *ngIf="(tab1Service.step$ | async) === 4"></app-tab1-booking-search>
+   
+
+    
+    <div id="map-canvas"></div>
+</ion-content>

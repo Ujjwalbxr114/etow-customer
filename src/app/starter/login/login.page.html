@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h1>Get started</h1>
+            </ion-col>
+        </ion-row>
+        <div id="form-content" class="custom-input">
+            <ion-row>
+                <ion-col>
+                    <ion-input type="email" placeholder="Email Address"
+                               [(ngModel)]="emailLoginService.emailLoginModel.email"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="password" placeholder="Password"
+                               [(ngModel)]="emailLoginService.emailLoginModel.password"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="block" color="primary" (click)="login()" [disabled]="!(isValid() | async)">
+                        Login
+                    </ion-button>
+                    <ion-label>Don't have an account?Get Started here</ion-label>
+           
+           
+                       
+                </ion-col>
+
+                
+            </ion-row>
+        </div>
+        
+    </ion-grid>
+</ion-content>

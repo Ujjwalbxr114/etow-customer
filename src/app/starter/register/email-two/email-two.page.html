@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h1>Get started</h1>
+            </ion-col>
+            <ion-col class="ion-text-right">
+                <p class="step-counter">2/3</p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div class="step-indicator"></div>
+                <div class="step-indicator active-indicator"></div>
+                <div class="step-indicator"></div>
+            </ion-col>
+        </ion-row>
+        <div id="form-content" class="custom-input">
+            <ion-row>
+                <ion-col>
+                    <ion-input type="email" placeholder="Email"
+                               [(ngModel)]="emailRegistrationService.emailRegistrationModel.email"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="password" placeholder="Password"
+                               [(ngModel)]="emailRegistrationService.emailRegistrationModel.password"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="password" placeholder="Confirm Password"
+                               [(ngModel)]="emailRegistrationService.emailRegistrationModel.password_confirmation"></ion-input>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="secondary">
+        <ion-button expand="block" color="primary" routerLink="../../../email-three" [disabled]="!(isValid() | async)">
+            Next
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>
+

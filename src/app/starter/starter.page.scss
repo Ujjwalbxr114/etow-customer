@@ -1,0 +1,32 @@
+#starter-bg {
+  background-image: url("~src/assets/bg/starter-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  min-height: 85vh;
+  width: 100%;
+}
+
+#welcome {
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+  z-index: 10;
+  background: #ffffff;
+  border-radius: 10px 10px 0 0;
+
+  .small-spacing {
+    font-size: 12px;
+    line-height: 3px;
+    color: #4A4A4A;
+  }
+
+  .bottom_text {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .weighted {
+    font-weight: 900;
+  }
+}

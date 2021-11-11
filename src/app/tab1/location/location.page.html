@@ -1,0 +1,46 @@
+<div class="map-overlay">
+    <ion-header class="ion-no-border">
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-button (click)="backButton()" color="dark">
+                    <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-item button class="location-input" lines="none" (click)="showLocationSelectionModal()">
+                    <ion-label position="floating">Current Location</ion-label>
+                    <ion-input type="text" placeholder="Location" readonly="readonly"
+                               [(ngModel)]="tab1Service.searchLocation.address"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
+<div class="map-overlay bottom-info">
+    <ion-grid>
+        <ion-row>
+            <ion-col (click)="showVehiclesModal()">
+                <h2>Towing services for you</h2>
+                <p *ngIf="!tab1Service.vehicle">Select vehicle</p>
+                <p *ngIf="tab1Service.vehicle">{{tab1Service.vehicle.license_plate}}</p>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="tab1Service.searchLocation && tab1Service.searchLocation.address && tab1Service.vehicle">
+            <ion-col size="4" *ngFor="let vhService of (tab1Service.searchServices$ | async).data"
+                     (click)="selectVehicleService(vhService)">
+                <div class="selection ion-activatable ripple-parent">
+                               <div class="info-item ion-text-center">
+                        <ion-ripple-effect></ion-ripple-effect>
+                        <img [src]="'assets/icon/' + (vhService.name | lowercase) + '.svg'" [alt]="vhService.name"/>
+                        <p>{{vhService.name}}</p>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>

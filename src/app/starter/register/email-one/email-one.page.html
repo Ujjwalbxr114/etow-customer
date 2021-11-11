@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h1>Get started</h1>
+            </ion-col>
+            <ion-col class="ion-text-right">
+                <p class="step-counter">1/3</p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div class="step-indicator active-indicator"></div>
+                <div class="step-indicator"></div>
+                <div class="step-indicator"></div>
+            </ion-col>
+        </ion-row>
+        <div id="form-content" class="custom-input">
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" placeholder="First Name"
+                               [(ngModel)]="emailRegistrationService.emailRegistrationModel.first_name"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" placeholder="Last Name"
+                               [(ngModel)]="emailRegistrationService.emailRegistrationModel.last_name"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Date Of Birth"
+                                  [(ngModel)]="emailRegistrationService.emailRegistrationModel.date_of_birth"></ion-datetime>
+                </ion-col>
+                <ion-col>
+                    <ion-select placeholder="Gender"
+                                [(ngModel)]="emailRegistrationService.emailRegistrationModel.gender">
+                        <ion-select-option value="male">Male</ion-select-option>
+                        <ion-select-option value="female">Female</ion-select-option>
+                        <ion-select-option value="">Prefer not to disclose</ion-select-option>
+                    </ion-select>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4">
+                    <ion-select placeholder="Country"
+                                [(ngModel)]="emailRegistrationService.emailRegistrationModel.phone_country">
+                        <ion-select-option value="IN">+91</ion-select-option>
+                        <ion-select-option value="SG">+65</ion-select-option>
+                       
+                    </ion-select>
+                </ion-col>
+                <ion-col size="8">
+                    <ion-input type="tel" placeholder="Contact number"
+                               [(ngModel)]="emailRegistrationService.emailRegistrationModel.phone_number"></ion-input>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="secondary">
+        <ion-button expand="block" color="warning" routerLink="../../../email-two" [disabled]="!(isValid() | async)">Next</ion-button>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,28 @@
+<ion-header translucent>
+    <ion-toolbar color="secondary">
+        <ion-title>Search {{name}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="this.dismissModal()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+    <ion-grid>
+        <ion-row class="custom-input">
+            <ion-col>
+                <ion-searchbar animated type="text" placeholder="Search" [(ngModel)]="searchText"></ion-searchbar>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-list>
+                    <ion-item button color="secondary" *ngFor="let search of searchList | filter: searchText"
+                              (click)="selectItem(search.id, search.value)">
+                        <ion-label>{{search.value}}</ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
